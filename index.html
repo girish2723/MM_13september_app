@@ -1,0 +1,41 @@
+<html>
+	<head>
+	<title> Motivational Msg app by Girish talele</title>
+	<style>
+		*{font-size:50px;font-family:Cambria;}
+		body {background-color:azure;}
+		h2{width:70%;border:groove;border-radius:40px;}
+	</style>
+
+	</head>
+	<body>
+		<center>
+			<h1> Motivational msg app </h1>
+			<form onSubmit="gm()">
+				<input type="submit" value="Get Msg">
+			</form>
+			<h2 id="quote"/>
+			<h2 id="author"/>
+			<script>
+				function gm()
+				{
+					event.preventDefault();
+					let quote = document.getElementById("quote");
+					let author= document.getElementById("author");
+
+					let url="http://quotes-api-self.vercel.app/quote"
+						fetch(url)
+						.then(res=>res.json())
+						.then(data=>{
+						quote.innerHTML=data.quote;	
+						author.innerHTML=data.author;	
+
+						
+				})
+					.catch(err=> alert("issue"+err));
+				}
+				
+			</script>	
+		</center>
+	</body>
+</html>
